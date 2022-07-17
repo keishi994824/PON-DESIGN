@@ -1,0 +1,404 @@
+@media (max-width: 753px){
+  
+  /* ヘッダー
+------------------------------- */
+.header-container{
+  padding: 10px 0;
+}
+
+.header-left h1{
+  font-size: 20px;
+}
+
+/*----------------------------
+* メニュー本体
+*----------------------------*/
+.header-right{
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(135deg, #7633a4, #250d65);
+}
+
+.header-right ul{
+  flex-direction: column;
+}
+
+header li a{
+  display: inline-block;
+  width: 100%;
+  height: auto;
+  padding: 18px 0;
+  text-align: center;
+  color: #fff;
+  box-sizing: border-box;
+  font-size: 18px;
+}
+
+a:hover::after {
+  display: none;
+}
+
+.header-right ul li{
+  padding-left: 0;
+}
+
+/*----------------------------
+* アニメーション部分
+*----------------------------*/
+
+/* アニメーション前のメニューの状態 */
+.header-right{
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .3s linear;
+}
+/* アニメーション後のメニューの状態 */
+.header-right.is-active{
+  pointer-events: auto;
+  opacity: 1;
+}
+
+/*----------------------------
+* ハンバーガーメニュー
+*----------------------------*/
+
+/* 3本線が×に */
+/*ボタン外側※レイアウトによってpositionや形状は適宜変更してください*/
+.openbtn{
+	/*ボタン内側の基点となるためrelativeを指定。
+追従するナビゲーションの場合はfixed＋top、rightといった位置をセットで指定*/
+	position: relative;
+	cursor: pointer;
+  width: 50px;
+  height:50px;
+	border-radius: 4px;
+  z-index: 100;
+}
+
+/*ボタン内側*/
+.openbtn span{
+  display: inline-block;
+  transition: all .2s;/*アニメーションの設定*/
+  position: absolute;
+  left: 12px;
+  height: 1.5px;
+  border-radius: 2px;
+	background: #fff;
+  width: 55%;
+  }
+
+.openbtn span:nth-of-type(1) {
+	top:15px;	
+}
+
+.openbtn span:nth-of-type(2) {
+	top:23px;
+}
+
+.openbtn span:nth-of-type(3) {
+	top:31px;
+}
+
+/*activeクラスが付与されると線が回転して×に*/
+.openbtn.active span:nth-of-type(1) {
+    top: 18px;
+    left: 12px;
+    transform: translateY(6px) rotate(45deg);
+    width: 55%;
+}
+
+.openbtn.active span:nth-of-type(2) {
+	opacity: 0;/*真ん中の線は透過*/
+}
+
+.openbtn.active span:nth-of-type(3){
+    top: 30px;
+    left: 12px;
+    transform: translateY(-6px) rotate(-45deg);
+    width: 55%;
+}
+
+  /* メインのbg部分
+------------------------------- */
+.bg-wrapper{
+  margin: 0 auto 48px;
+}
+
+.bg-text{
+  text-align: left;
+  font-weight: bold;
+  margin: 0 auto;
+  width: 70%;
+}
+
+.main-title{
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.sub-title{
+  font-size: 16px;
+  line-height: 2;
+  width: 150px;
+  padding: 30px 0 38px 0;
+}
+
+
+/* 縦線が動いてスクロールを促す */
+
+/*スクロールダウン全体の場所*/
+.scrolldown1{
+  width: 97%;
+  /*描画位置※位置は適宜調整してください*/
+position:absolute;
+left:95%;
+top: 700;
+bottom:10px;
+  /*全体の高さ*/
+height:50px;
+}
+
+/*Scrollテキストの描写*/
+.scrolldown1 span{
+  transform: rotate(90deg);
+  /*描画位置*/
+position: absolute;
+left:-15px;
+top: -15px;
+  /*テキストの形状*/
+color: #eee;
+font-size: 0.7rem;
+letter-spacing: 0.05em;
+}
+
+/* 線の描写 */
+.scrolldown1::after{
+content: "";
+  /*描画位置*/
+position: absolute;
+top: 0;
+left: 11;
+  /*線の形状*/
+width: 1px;
+height: 30px;
+background: #eee;
+  /*線の動き1.4秒かけて動く。永遠にループ*/
+animation: pathmove 1.4s ease-in-out infinite;
+opacity:0;
+}
+
+/*高さ・位置・透過が変化して線が上から下に動く*/
+@keyframes pathmove{
+0%{
+  height:0;
+  top:30;
+  opacity: 0;
+}
+30%{
+  height:45;
+  opacity: 1;
+}
+100%{
+  height:0;
+  top:60;
+  opacity: 0;
+}
+}
+
+
+/* news お知らせ */
+.news-wrapper{
+  margin-bottom: 95px;
+}
+
+.news-container{
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-title{
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.news{
+  text-align: left;
+  margin-left: 0;
+  width: 100%;
+}
+
+.news .text{
+  display: block;
+  flex-flow: column;
+  align-items: start;
+  margin-bottom: 40px;
+}
+
+.date{
+  display: flex;
+  padding-bottom: 10px;
+}
+
+/* service 事業内容 */
+.service-container{
+  position: relative;
+  margin: 0 auto;
+  width: 95%;
+  text-align: center;
+}
+
+.service-list{
+  flex-direction: column;
+  margin-bottom: 0;
+}
+
+.service{
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.service p{
+  font-size: 14px;
+}
+
+.service-wrapper .more-btn{
+  margin-bottom: 60px;
+}
+
+/* works 制作実績 */
+.slider-item img{
+  width: 100%;
+  height:auto;
+}
+
+.slick-prev {/*戻る矢印の位置と形状*/
+  top: 36%;
+  left:2.5%;
+  transform: rotate(-135deg);
+}
+
+.slick-next {/*次へ矢印の位置と形状*/
+  top: 36%;
+  right:2.5%;
+  transform: rotate(45deg);
+}
+
+/*ドットナビゲーションの設定*/
+.slick-dots {
+  position: relative;
+  z-index: 3;
+  text-align:right;
+  width: 100%;
+  margin-top:-35%;/*ドットの位置*/
+}
+
+.works-box{
+  position: absolute;
+  margin: 0 auto;
+  right: 0;
+  width: 120%;
+  top: 36%;
+  margin-right: calc(50% - 50vw);
+  margin-left: calc(50% - 50vw);
+  text-align: center;
+}
+
+.works-info{
+  margin: 0 auto;
+  padding-top: 250px;
+  
+}
+
+/* compny 私たちについて */
+.company-wrapper{
+  margin-bottom: 200px;
+}
+
+.company-container{
+  width: 50%;
+  padding-top: 170px;
+  background-image: url(img/bg-circle.png);
+  background-size: 550px;
+}
+
+.company-box{
+  width: 255px;
+  margin: 0 auto;
+}
+
+.message{
+  display: inline-block;
+  flex-flow: column;
+}
+
+.message h2{
+  font-size: 31px;
+  background: linear-gradient(transparent 70%, #f5f534 0%);
+  display: inline-block;
+}
+
+.company-text{
+  line-height: 1.8;
+}
+
+.company-text p{
+  font-size: 14px;
+}
+
+.p-2{
+  width: 235px;
+}
+
+/* recruit 採用実績 */
+.recruit-wrapper{
+  margin-bottom: 40px;
+}
+
+.recruit-container{
+  width: 95%;
+  height: 350px;
+  flex-flow: column-reverse;
+}
+
+.recruit-box{
+  width: 100%;
+  height: 338px;
+}
+
+/* contact お問合せ */
+.contact-container{
+  width: 42%;
+}
+
+.contact-wrapper .more-btn{
+  margin-bottom: 60px;
+}
+
+/* footer */
+.footer-container{
+  width: 80%;
+}
+
+}
+
+
+
+/* PC表示 */
+@media (min-width: 753px){
+  .openbtn{
+    display: none;
+  }
+
+  
+  
+  
+}
